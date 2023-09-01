@@ -1,7 +1,22 @@
-# FullStack Social Media App
+# WCEAchievo
+## Mini-Project-II
+### A Platform for WCE to Showcase Activities and Achievements
 
-Build a COMPLETE Fullstack Responsive MERN App with Auth, Likes, Dark Mode | React, MongoDB, MUI
+### Under the guidance of: Dr. P. K. Kharat
 
-Video: https://www.youtube.com/watch?v=K8YELRmUb5o
+### Contributors: 
+Mr. Shah Prajwal Utkarsh (21610009) <br>
+Ms. Patil Yashashwi Kailas (21610020)<br>
+Ms. Umare Shravani Ashok (21610075)<br>
+Ms. Ladda Vaishnavi Laxmikant (21610076)<br>
+Ms. Bhosale Swarada Pravin (21610077)<br>
+Mr. Choudhary Gopal Jalaram (21610080)<br>
 
-For all related questions and discussions about this project, check out the discord: https://discord.gg/2FfPeEk2mX
+### Introduction:
+Introducing WCEacheivo, an innovative web-based application aimed at developing how
+Departments activities and achievements are showcased. Built on the robust MERN stack,
+WCEAcheivo streamlines the process of generating weekly reports that highlight new student
+accomplishments, teacher achievements, and departmental activities. This platform serves as a
+dynamic bridge connecting students, faculty, and authorities in a cohesive and engaging manner.
+
+
