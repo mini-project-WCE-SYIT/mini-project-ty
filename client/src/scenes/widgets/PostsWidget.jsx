@@ -9,7 +9,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
   const token = useSelector((state) => state.token);
 
   const getPosts = async () => {
-    const response = await fetch("${process.env.REACT_APP_URL}/posts", {
+    const response = await fetch(`${process.env.REACT_APP_URL}/posts`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -46,7 +46,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
           firstName,
           lastName,
           description,
-          location,
+          branch,
           picturePath,
           userPicturePath,
           likes,
@@ -58,7 +58,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
             postUserId={userId}
             name={`${firstName} ${lastName}`}
             description={description}
-            location={location}
+            branch={branch}
             picturePath={picturePath}
             userPicturePath={userPicturePath}
             likes={likes}

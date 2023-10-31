@@ -21,8 +21,8 @@ const registerSchema = yup.object().shape({
   lastName: yup.string().required("required"),
   email: yup.string().email("invalid email").required("required"),
   password: yup.string().required("required"),
-  location: yup.string().required("required"),
-  occupation: yup.string().required("required"),
+  branch: yup.string().required("required"),
+  qualification: yup.string().required("required"),
   picture: yup.string().required("required"),
 });
 
@@ -36,8 +36,8 @@ const initialValuesRegister = {
   lastName: "",
   email: "",
   password: "",
-  location: "",
-  occupation: "",
+  branch: "",
+  qualification: "",
   picture: "",
 };
 
@@ -59,10 +59,10 @@ const Form = () => {
     // this allows us to send form info with image
     const formData = new FormData();
     for (let value in values) {
+      // console.log(value, values[value]);
       formData.append(value, values[value]);
     }
     formData.append("picturePath", values.picture.name);
-
     const savedUserResponse = await fetch(
       `${process.env.REACT_APP_URL}/auth/register`,
       {
@@ -152,25 +152,25 @@ const Form = () => {
                   sx={{ gridColumn: "span 2" }}
                 />
                 <TextField
-                  label="Location"
+                  label="Branch"
                   onBlur={handleBlur}
                   onChange={handleChange}
-                  value={values.location}
-                  name="location"
-                  error={Boolean(touched.location) && Boolean(errors.location)}
-                  helperText={touched.location && errors.location}
+                  value={values.branch}
+                  name="branch"
+                  error={Boolean(touched.branch) && Boolean(errors.branch)}
+                  helperText={touched.branch && errors.branch}
                   sx={{ gridColumn: "span 4" }}
                 />
                 <TextField
-                  label="Occupation"
+                  label="Qualification"
                   onBlur={handleBlur}
                   onChange={handleChange}
-                  value={values.occupation}
-                  name="occupation"
+                  value={values.qualification}
+                  name="qualification"
                   error={
-                    Boolean(touched.occupation) && Boolean(errors.occupation)
+                    Boolean(touched.qualification) && Boolean(errors.qualification)
                   }
-                  helperText={touched.occupation && errors.occupation}
+                  helperText={touched.qualification && errors.qualification}
                   sx={{ gridColumn: "span 4" }}
                 />
                 <Box
@@ -195,7 +195,7 @@ const Form = () => {
                       >
                         <input {...getInputProps()} />
                         {!values.picture ? (
-                          <p>Add Picture Here</p>
+                          <p>Profile Picture</p>
                         ) : (
                           <FlexBetween>
                             <Typography>{values.picture.name}</Typography>

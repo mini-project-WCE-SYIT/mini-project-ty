@@ -79,7 +79,7 @@ const Navbar = () => {
           </IconButton>
           <Message sx={{ fontSize: "25px" }} />
           <Notifications sx={{ fontSize: "25px" }} />
-          <Help sx={{ fontSize: "25px" }} />
+          <Help onClick={()=>navigate('/faq')} sx={{ fontSize: "25px" }} />
           <FormControl variant="standard" value={fullName}>
             <Select
               value={fullName}
@@ -100,6 +100,9 @@ const Navbar = () => {
             >
               <MenuItem value={fullName}>
                 <Typography>{fullName}</Typography>
+              </MenuItem>
+              <MenuItem >
+                <Typography>Export Activity Report</Typography>
               </MenuItem>
               <MenuItem onClick={() => dispatch(setLogout())}>Log Out</MenuItem>
             </Select>
