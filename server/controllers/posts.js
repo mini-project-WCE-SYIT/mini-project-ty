@@ -71,3 +71,14 @@ export const likePost = async (req, res) => {
     res.status(404).json({ message: err.message });
   }
 };
+
+export const getAllPostsInGivenTimeFrame = async (req, res) => {
+  try {
+    const { startDate, endDate } = req.params;
+    // console.log(startDate,endDate);
+    const posts = await Post.find({ createdAt: { $gte: startDate, $lt: endDate } });
+    res.status(200).json(posts);
+  } catch (err) {
+    res.status(404).json({ message: err.message });
+  }
+}

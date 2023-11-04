@@ -102,7 +102,9 @@ const Navbar = () => {
                 <Typography>{fullName}</Typography>
               </MenuItem>
               <MenuItem >
-                <Typography>Export Activity Report</Typography>
+                <Typography> <div onClick={()=>{
+                  navigate('/generateReport')
+                }}>Export Activity Report</div></Typography>
               </MenuItem>
               <MenuItem onClick={() => dispatch(setLogout())}>Log Out</MenuItem>
             </Select>
