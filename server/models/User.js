@@ -39,6 +39,11 @@ const UserSchema = new mongoose.Schema(
     qualification: {
       type: String,
     },
+    role:{
+      type: String,
+      enum:['User','Admin'],
+      default:'User'
+    },
     viewedProfile: Number,
     impressions: Number,
   },
