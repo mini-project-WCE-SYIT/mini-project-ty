@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllPostsInGivenTimeFrame, getFeedPosts, getUserPosts, likePost } from "../controllers/posts.js";
+import { getFeedPosts, getUserPosts, likePost,getAllPostsInGivenTimeFrame } from "../controllers/posts.js";
 import { verifyToken } from "../middleware/auth.js";
 
 const router = express.Router();
@@ -10,4 +10,7 @@ router.get("/:userId/posts", verifyToken, getUserPosts);
 router.get("/timeframe/:startDate/:endDate", verifyToken, getAllPostsInGivenTimeFrame);
 /* UPDATE */
 router.patch("/:id/like", verifyToken, likePost);
+router.get("/timeframe/:startDate/:endDate", getAllPostsInGivenTimeFrame);
+
 export default router;
+
