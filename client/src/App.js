@@ -9,6 +9,7 @@ import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "./theme";
 import FAQPage from "scenes/FAQPage/FAQPage";
 import ReportPage from "scenes/ReportPage/ReportPage";
+import MyPostWidget from "scenes/widgets/MyPostWidget";
 
 function App() {
   const mode = useSelector((state) => state.mode);
@@ -38,7 +39,8 @@ function App() {
               path="/faq"
               element={isAuth ? <FAQPage /> : <Navigate to="/" />}
             />
-          
+            {/* New route for creating a post */}
+            <Route path="/create-post" element={<MyPostWidget />} />
           </Routes>
         </ThemeProvider>
       </BrowserRouter>

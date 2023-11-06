@@ -1,0 +1,54 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+  
+  .container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .achievement-selection {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: transparent;
+    color: black;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .curricular {
+    border-color: #007bff;
+  }
+  
+  .extracurricular {
+    border-color: #007bff;
+  }
+  
+  .cocurricular {
+    border-color: #007bff;
+  }
+  
