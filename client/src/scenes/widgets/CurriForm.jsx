@@ -85,9 +85,14 @@ const CurriForm = ({picturePath}) => {
 				<UserImage image={picturePath} />
 				<FlexBetween gap='2rem'>
 					<FlexCol gap='1.5rem'>
+					
+					<TextField placeholder='Student/Teacher ID' id="standard-basic" variant="standard"/>
+
 						<TextField placeholder='Name of the event' id="standard-basic" variant="standard"
 							onChange={(e) => setEventName(e.target.value)}
 							value={eventName} />
+
+
 
 						<TextField id="standard-basic" variant="standard" placeholder='Activity Type'
 							onChange={(e) => setActivityType(e.target.value)}
