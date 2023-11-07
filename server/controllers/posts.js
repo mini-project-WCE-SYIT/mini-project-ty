@@ -1,6 +1,7 @@
 import Post from "../models/Post.js";
 import User from "../models/User.js";
-
+import ejs from 'ejs';
+import puppeteer from 'puppeteer'
 /* CREATE */
 export const createPost = async (req, res) => {
 	try {
@@ -104,4 +105,48 @@ export const getAllPostsInGivenTimeFrame = async (req, res) => {
 	} catch (err) {
 		res.status(404).json({ message: err.message });
 	}
+};
+
+const activities = [
+  {
+      faculty: 'John Doe',
+      name: 'Teaching',
+      research: 'Research Paper 1',
+      thesis: 'Master\'s Thesis',
+      scholarship: 'Scholarship 1',
+      description: 'Description 1',
+      organised: 'Organization A',
+      date: '2023-11-07',
+  },
+  {
+      faculty: 'Jane Smith',
+      name: 'Research',
+      research: 'Research Paper 2',
+      thesis: 'Ph.D. Thesis',
+      scholarship: 'Scholarship 2',
+      description: 'Description 2',
+      organised: 'Organization B',
+      date: '2023-11-08',
+  },
+  // Add more activity objects as needed
+];
+
+
+export const generatePDF = async (req, res) => {
+	const {_id} = req.params;
+	const  user = await User.findById(_id);
+	if(!user){
+		return res.status(404).json({msg:'User not found'});
+	}
+	const posts = await Post.find({userId: user._id});
+	if(!posts){
+		return res.status(404).json({msg:'User dosent have any posts'});
+	}
+	const date = new Date();
+	return res.render('first',{
+		period: 'June to July 2023',
+		currentDate: date.toString().substring(0,15),
+		activities: posts,
+	});
+
 };
