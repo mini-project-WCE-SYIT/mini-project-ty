@@ -1,0 +1,66 @@
+/* CurriForm.css */
+.curri-form {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .date-div{
+    display: flex;
+  }
+
+  .widget-wrapper {
+    /* Add styles for the widget container */
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    width: 50%;
+    margin: 20px;
+    max-height: max-content;
+    box-shadow: 6px 6px 8px #cbced1, -6px -6px 8px #f0f0f0;
+  }
+
+  /* Define styles for form elements */
+  .input-field {
+    margin-left: 100px;
+    width: 300px;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Define styles for the select input */
+  .select-input {
+    width: 100%;
+  }
+  
+  /* Add styles for the image upload area */
+  .image-upload {
+    border: 2px dashed #007bff; /* Use your desired color */
+    padding: 1rem;
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Define styles for the buttons */
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  /* Additional styles for the icons */
+  .icon {
+    color: #333; /* Use your desired color */
+    margin-right: 0.25rem;
+    cursor: pointer;
+  }
+  
+  /* Styling for the divider */
+  .divider {
+    padding: 20px;
+    margin: 4px 0;
+  }

@@ -16,6 +16,7 @@ import CurriForm from './CurriForm';
 import CoCurriForm from './CoCurriForm';
 import ExCurriForm from './ExCurriForm';
 import './MyPostWidget.css'
+import { Height } from "@mui/icons-material";
 
 const MyPostWidget = ({ picturePath }) => {
 	const [isAchieved, setIsAchieved] = useState(0);
@@ -74,8 +75,8 @@ const MyPostWidget = ({ picturePath }) => {
       <p>Please select the type of achievement you want to post about</p>
       <div class="buttons">
         <button class="button curricular" onClick={() => { setIsAchieved(1) }}>Curricular</button>
-        <button class="button extracurricular" onClick={() => { setIsAchieved(2) }}>Extra Curricular</button>
-        <button class="button cocurricular" onClick={() => { setIsAchieved(3) }}>Co-Curricular</button>
+        <button class="button extracurricular" onClick={() => { setIsAchieved(3) }}>Extra Curricular</button>
+        <button class="button cocurricular" onClick={() => { setIsAchieved(2) }}>Co-Curricular</button>
       </div>
     </div>
   </div>
