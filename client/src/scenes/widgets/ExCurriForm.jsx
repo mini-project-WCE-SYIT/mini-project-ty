@@ -24,7 +24,9 @@ const CurriForm = ({ picturePath }) => {
   const [activityType, setActivityType] = useState("");
   const [shortDescription, setShortDescription] = useState("");
   const [location, setLocation] = useState("");
-  const [date, setDate] = useState("");
+  const [rank, setRank] = useState("");
+	const [startDate, setstartDate] = useState("");
+	const [endDate, setendDate] = useState("");
   const [organizedBy, setOrganizedBy] = useState("");
   const { palette } = useTheme();
   const { _id } = useSelector((state) => state.user);
@@ -40,7 +42,9 @@ const CurriForm = ({ picturePath }) => {
     formData.append("eventName", eventName);
     formData.append("activityType", activityType);
     formData.append("location", location);
-    formData.append("date", date);
+    formData.append("startDate", startDate);
+    formData.append("endDate", endDate);
+    formData.append("rank", rank);
     formData.append("organizedBy", organizedBy);
     if (image) {
       formData.append("picture", image);
@@ -59,7 +63,9 @@ const CurriForm = ({ picturePath }) => {
     setActivityType("");
     setShortDescription("");
     setLocation("");
-    setDate("");
+    setstartDate("");
+    setendDate("");
+    setRank("");
     setOrganizedBy("");
   };
 
@@ -96,7 +102,7 @@ const CurriForm = ({ picturePath }) => {
                     <MenuItem value="Option 1">Sports Achievements</MenuItem>
                     <MenuItem value="Option 2">Arts and Creative Achievements</MenuItem>
                     <MenuItem value="Option 3">Leadership and Service</MenuItem>
-                    <MenuItem value="Option 3">Competitions and Contests</MenuItem>
+                    <MenuItem value="Option 4">Competitions and Contests</MenuItem>
                   </Select>
                 </FormControl>
               </Box>
@@ -105,6 +111,9 @@ const CurriForm = ({ picturePath }) => {
                 className="input-field"
                 id="standard-basic"
                 variant="standard"
+                onChange={(e) => setRank(e.target.value)}
+                value={rank}
+
               />
               <Typography color={'grey'}>Start date: </Typography>
               <TextField
@@ -113,8 +122,8 @@ const CurriForm = ({ picturePath }) => {
                 variant="standard"
                 type='date'
                 placeholder="Start Date"
-                onChange={(e) => setDate(e.target.value)}
-                value={date}
+                onChange={(e) => setstartDate(e.target.value)}
+                value={startDate}
               />
               <Typography color={'grey'}>End Date: </Typography>
               <TextField
@@ -123,6 +132,8 @@ const CurriForm = ({ picturePath }) => {
                 variant="standard"
                 type='date'
                 placeholder="End Date"
+                value={endDate}
+                onChange={(e) => setendDate(e.target.value)}
               />
               <TextField
                 className="input-field"
