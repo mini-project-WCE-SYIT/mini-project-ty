@@ -1,5 +1,3 @@
-
-
 .transition,
 p,
 ul li i:before,
@@ -26,7 +24,7 @@ h2 {
 
 .rules {
   min-height: 0;
-
+  margin-top: 2rem;
   box-shadow: 0 10px 0 0 skyblue inset;
   background-color: #fcfcfc;
   /* max-width: 60%; */
@@ -51,7 +49,7 @@ h2 {
 
 .rules h1 {
   text-transform: uppercase;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 36px;
   line-height: 42px;
   letter-spacing: 3px;
@@ -119,7 +117,7 @@ h2 {
 }
 .rules ul li i:before,
 ul li i:after {
-  content: "";
+  content: '';
   position: absolute;
   background-color: skyblue;
   width: 3px;
@@ -131,7 +129,7 @@ ul li i:after {
 .rules ul li i:after {
   transform: translate(2px, 0) rotate(-45deg);
 }
-.rules ul li input[type="checkbox"] {
+.rules ul li input[type='checkbox'] {
   position: absolute;
   cursor: pointer;
   width: 100%;
@@ -139,16 +137,16 @@ ul li i:after {
   z-index: 5;
   opacity: 0;
 }
-.rules ul li input[type="checkbox"]:checked ~ p {
+.rules ul li input[type='checkbox']:checked ~ p {
   margin-top: 0;
   max-height: 0;
   opacity: 0;
   transform: translate(0, 50%);
 }
-.rules ul li input[type="checkbox"]:checked ~ i:before {
+.rules ul li input[type='checkbox']:checked ~ i:before {
   transform: translate(2px, 0) rotate(45deg);
 }
-.rules ul li input[type="checkbox"]:checked ~ i:after {
+.rules ul li input[type='checkbox']:checked ~ i:after {
   transform: translate(-2px, 0) rotate(-45deg);
 }
 

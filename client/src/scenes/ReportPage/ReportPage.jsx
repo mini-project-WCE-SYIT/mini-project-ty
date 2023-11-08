@@ -1,78 +1,100 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import Navbar from 'scenes/navbar'
+import { useSelector } from 'react-redux'
 import './ReportPage.css'
 const ReportPage = () => {
-
-  const [startDate,setStartDate]=useState()
-  const [endDate,setEndDate]=useState()
-  const [data,setData]=useState()
-  const getReportPosts = async (start,end) => {
+  const [startDate, setStartDate] = useState('')
+  const [endDate, setEndDate] = useState('')
+  const [data, setData] = useState([])
+  const token = useSelector((state) => state.token)
+  const [filteredData, setFilteredData] = useState([])
+  const getReportPosts = async (start, end) => {
+    const stDateObj = new Date(startDate)
+    const endDateObj = new Date(endDate)
+    const stFormattedDate = stDateObj.toISOString().split('T')[0]
+    const enFormattedDate = endDateObj.toISOString().split('T')[0]
+    console.log('start and end dates are', stFormattedDate, enFormattedDate)
     const response = await fetch(
-      `${process.env.REACT_APP_URL}/posts/timeframe/${start}/${end}`,
+      `${process.env.REACT_APP_URL}/posts/timeframe/${stFormattedDate}/${enFormattedDate}`,
       {
-        method: "GET"
+        method: 'GET',
+        headers: { Authorization: `Bearer ${token}` },
       }
-    );
-    const data1 = await response.json();
+    )
+    const data1 = await response.json()
     setData(data1)
     console.log(data)
     // dispatch(setPosts({ posts: data }));
-  };
-  const handleReport = () =>{
-    const stDateObj = new Date(startDate);
-    const endDateObj = new Date(endDate);
-    const stISO = stDateObj.toISOString();
-    const enISO = endDateObj.toISOString();
-    console.log(stISO, enISO);
-    getReportPosts(stISO,enISO);
   }
-  
+  const handleReport = () => {
+    const stDateObj = new Date(startDate)
+    const endDateObj = new Date(endDate)
+    const stISO = stDateObj.toISOString()
+    const enISO = endDateObj.toISOString()
+    console.log(stISO, enISO)
+    getReportPosts(stISO, enISO)
+  }
 
   return (
     <>
       <Navbar />
-      <div className="date">
-        <div className="fromDate">
+      <div className='date'>
+        <div className='fromDate'>
           <p>From</p>
-          <input value={startDate} onChange={(e)=>{
-            setStartDate(e.target.value);
-          }} type="date" placeholder='Start date' />
+          <input
+            value={startDate}
+            onChange={(e) => {
+              setStartDate(e.target.value)
+            }}
+            type='date'
+            placeholder='Start date'
+          />
         </div>
-        <div className="toDate">
+        <div className='toDate'>
           <p>To</p>
-          <input value={endDate} onChange={(e)=>{
-            setEndDate(e.target.value);
-          }} type="date" placeholder='End date' />
+          <input
+            value={endDate}
+            onChange={(e) => {
+              setEndDate(e.target.value)
+            }}
+            type='date'
+            placeholder='End date'
+          />
         </div>
       </div>
-      <div className="btn">
-        <button className='btn' onClick={handleReport}>Generate Report</button>
+      <div className='btn'>
+        <button className='btn' onClick={handleReport}>
+          Generate Report
+        </button>
       </div>
-      <table>
-        {/* <tbody> */}
-        <th>
-          <td>Sr. No.</td>
-          <td>Event Name</td>
-          <td>Activity Type</td>
-          <td>Location</td>
-          <td>Details</td>
-          <td>Organised By</td>
-          <td>Date</td>
-        </th>
-        {/* <tbody> */}
-          {data?.map((item, index) => (
-          <tr key={index}>
-            <td>{index + 1}</td>
-            <td>{item.eventName}</td>
-            <td>{item.activityType}</td>
-            <td>{item.location}</td>
-            <td>{item.shortDescription}</td>
-            <td>{item.organisedBy}</td>
-            <td>{item.date}</td>
-          </tr>
-        ) )}
-  {/* </tbody>   */}
-      </table>
+      <div className='tbContainer'>
+        <table className='report-table'>
+          <thead>
+            <tr>
+              <th>Sr. No.</th>
+              <th>Event Name</th>
+              <th>Activity Type</th>
+              <th>Location</th>
+              <th>Details</th>
+              <th>Organised By</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data?.map((item, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{item.eventName}</td>
+                <td>{item.activityType}</td>
+                <td>{item.location}</td>
+                <td>{item.description}</td>
+                <td>{item.organisedBy || item.organizedBy}</td>
+                <td>{item.endDate || item.date}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   )
 }
