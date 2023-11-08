@@ -99,10 +99,10 @@ const CurriForm = ({ picturePath }) => {
                     marginRight="50px"
                     onChange={handleActivityTypeChange}
                   >
-                    <MenuItem value="Option 1">Sports Achievements</MenuItem>
-                    <MenuItem value="Option 2">Arts and Creative Achievements</MenuItem>
-                    <MenuItem value="Option 3">Leadership and Service</MenuItem>
-                    <MenuItem value="Option 4">Competitions and Contests</MenuItem>
+                    <MenuItem value="Sports Achievements">Sports Achievements</MenuItem>
+                    <MenuItem value="Arts and Creative Achievements">Arts and Creative Achievements</MenuItem>
+                    <MenuItem value="Leadership and Service">Leadership and Service</MenuItem>
+                    <MenuItem value="Competitions and Contests">Competitions and Contests</MenuItem>
                   </Select>
                 </FormControl>
               </Box>
@@ -113,7 +113,6 @@ const CurriForm = ({ picturePath }) => {
                 variant="standard"
                 onChange={(e) => setRank(e.target.value)}
                 value={rank}
-
               />
               <Typography color={'grey'}>Start date: </Typography>
               <TextField

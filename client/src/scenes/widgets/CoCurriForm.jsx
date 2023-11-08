@@ -116,22 +116,22 @@ const CurriForm = ({ picturePath }) => {
 										label='Activity Type'
 										marginRight='50px'
 										onChange={handleActivityTypeChange}>
-										<MenuItem value='Option 1'>
+										<MenuItem value='Special Awards and Recognitions'>
 											Special Awards and Recognitions
 										</MenuItem>
-										<MenuItem value='Option 2'>
+										<MenuItem value='Personal Development and Skills'>
 											Personal Development and Skills
 										</MenuItem>
-										<MenuItem value='Option 3'>
+										<MenuItem value='Innovation and Invention'>
 											Innovation and Invention
 										</MenuItem>
-										<MenuItem value='Option 4'>
+										<MenuItem value='Option Environmental and Sustainability Achievements'>
 											Environmental and Sustainability Achievements
 										</MenuItem>
-										<MenuItem value='Option 5'>
+										<MenuItem value='Cultural and Diversity Contributions'>
 											Cultural and Diversity Contributions
 										</MenuItem>
-										<MenuItem value='Option 6'>Health and Wellness</MenuItem>
+										<MenuItem value='Health and Wellness'>Health and Wellness</MenuItem>
 									</Select>
 								</FormControl>
 							</Box>

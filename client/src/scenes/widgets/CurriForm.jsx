@@ -120,13 +120,13 @@ const CurriForm = ({ picturePath }) => {
 										label='Activity Type'
 										marginRight='50px'
 										onChange={handleActivityTypeChange}>
-										<MenuItem value='Option 1'>High grades in exams</MenuItem>
-										<MenuItem value='Option 2'>Research publications</MenuItem>
-										<MenuItem value='Option 3'>Academic competitions</MenuItem>
-										<MenuItem value='Option 4'>
+										<MenuItem value='High grades in exams'>High grades in exams</MenuItem>
+										<MenuItem value='Research publications'>Research publications</MenuItem>
+										<MenuItem value='Academic competitions'>Academic competitions</MenuItem>
+										<MenuItem value='Projects or thesis accomplishments'>
 											Projects or thesis accomplishments
 										</MenuItem>
-										<MenuItem value='Option 5'>
+										<MenuItem value='Scholarships and grants'>
 											Scholarships and grants
 										</MenuItem>
 									</Select>
