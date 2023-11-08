@@ -1,0 +1,188 @@
+<html>
+
+    <head>
+        <!-- <link rel="stylesheet" type="text/css" href="/public/style.css"> -->
+        <title>Template1</title>
+        <style>
+            .firstpage-container {
+                height: 100vh;
+                width: 100%;
+                background-color: #fff;
+                font-size: 16px;
+            }
+
+            .header {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                /* Center horizontally */
+                text-align: center;
+                /* Center the text within the container */
+                font-weight: 400;
+                font-size: 16px;
+            }
+
+            .header div {
+                text-align: center;
+                /* Center the text within the div */
+            }
+
+            .logo {
+                width: 10rem;
+                padding: 0;
+                margin: 0;
+            }
+
+            @media (max-width: 768px) {
+                .firstpage-container>.header {
+                    margin-top: -2rem;
+                    font-size: 14px;
+                }
+
+                .table-container {
+                    font-size: 14px !important;
+                    width: 100vw;
+                    height: 20%;
+                    font-size: 14px;
+                }
+
+                .custom-table tr {
+                    font-size: 10px !important;
+                }
+
+                .logo {
+                    width: 5rem;
+                }
+
+                .header>div {
+                    font-size: 12px !important;
+                }
+
+                .contactDetails,
+                .transcriptDetails,
+                .transcriptName,
+                .collegProgram,
+                .details {
+                    font-size: 8px;
+                }
+
+                .contactDetails {
+                    margin-top: -1rem;
+                }
+
+                .transcriptName {
+                    margin-top: -1rem;
+                }
+
+                .next-btn {
+                    opacity: 0;
+                }
+            }
+
+            .contactDetails {
+                height: 3rem;
+                display: flex;
+                align-items: center;
+                font-size: 20px;
+                justify-content: space-between;
+                border-top: 2px solid black;
+                border-bottom: 2px solid black;
+                padding-left: 1rem;
+                padding-right: 1rem;
+                font-size: 16px;
+            }
+
+            .ActivityDetails {
+                height: 3rem;
+                display: flex;
+                align-items: left;
+                font-size: 16px;
+                justify-content: left;
+            }
+
+            .ActivityName {
+                height: 3rem;
+                display: flex;
+                align-items: center;
+                font-size: 20px;
+                justify-content: center;
+                font-size: 24px;
+                font-weight: bolder;
+                text-decoration: underline;
+            }
+
+            .custom-table {
+                font-size: 16px;
+                border: 1px solid #131010;
+                width: 90%;
+                height: 50%;
+                /* max-width: 800px; */
+                margin: 0 auto;
+            }
+
+            .custom-table tr {
+                height: 20px;
+            }
+
+            .separation-line {
+                border-top: 1px solid #000;
+                /* Add your desired line styles here */
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="firstpage-container">
+            <div class="ActivityName">Department Of Information Technology</div>
+            <div class="ActivityName">Activity Report</div>
+            <div class="ActivityName">Co-Curricular Achivements</div>
+            <div class="ActivityName"><%= period %></div>
+            <div class="ActivityDetails">
+                Date: <%= currentDate %>
+            </div>
+            <div class="table-container">
+                <table border="2" class="custom-table" style="table-layout: fixed;">
+                    <colgroup>
+                        <col style="width: 15%" />
+                        <col style="width: 15%" />
+                        <col style="width: 15%" />
+                        <col style="width: 30%" />
+                        <col style="width: 30%" />
+                        <col style="width: 30%" />
+                        <col style="width: 30%" />
+                        <col style="width: 35%;">
+                        <col style="width: 25%;">
+                        <col style="width: 15%;">
+                    </colgroup>
+                    <tr style="text-align: center;">
+                        <th>Activity No</th>
+                        <th>Faculty/ Person Name</th>
+                        <th>Activity Type</th>
+                        <th>Cultural and Diversity Contributions</th>
+                        <th>Environmental and Sustainability Acheivements</th>
+                        <th>Innovations and Invention</th>
+                        <th>Special Awards</th>
+                        <th>Other Details</th>
+                        <th>Organised By</th>
+                        <th>Period</th>
+                    </tr>
+                    <% activities.forEach((activity, index) => { %>
+                    <tr style="text-align: center;">
+                        <td><%= index + 1 %></td>
+                        <td><%= activity.faculty %></td>
+                        <td><%= activity.name %></td>
+                        <td><%= activity.cultural %></td>
+                        <td><%= activity.environmental %></td>
+                        <td><%= activity.invention %></td>
+                        <td><%= activity.special %></td>
+                        <td><%= activity.description %></td>
+                        <td><%= activity.organised %></td>
+                        <td><%= activity.date %></td>
+                    </tr>
+                    <% }); %>
+                </table>
+            </div>
+        </div>
+    </body>
+
+</html>
