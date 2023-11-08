@@ -54,6 +54,7 @@
 .tbContainer {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -91,4 +92,26 @@ table.report-table td {
 
 table.report-table tr:hover {
   background-color: #e0e0e0;
+}
+
+.btnContainer {
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
+}
+.btnContainer button {
+  background-color: #5df355; /* Sky Blue */
+  margin: 1rem 0;
+  width: 15rem;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0.8rem;
+}
+
+/* Hover effect for the button */
+.btnContainer button:hover {
+  background-color: #00d604; /* Slightly darker blue on hover */
 }
