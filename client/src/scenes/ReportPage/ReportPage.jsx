@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from 'scenes/navbar'
 import { useSelector } from 'react-redux'
 import './ReportPage.css'
@@ -6,9 +6,11 @@ import './ReportPage.css'
 const ReportPage = () => {
   const [startDate, setStartDate] = useState('')
   const [endDate, setEndDate] = useState('')
+  const [pdfUrl, setPdfUrl] = useState('')
   const { _id } = useSelector((state) => state.user)
   const [data, setData] = useState([])
   const token = useSelector((state) => state.token)
+
   const getReportPosts = async (start, end) => {
     const stDateObj = new Date(startDate)
     const endDateObj = new Date(endDate)
@@ -25,8 +27,25 @@ const ReportPage = () => {
     )
     const data1 = await response.json()
     setData(data1)
-    console.log(data)
+    console.log(data1)
+
+    const downloadPdfResponse = await fetch(
+      `${process.env.REACT_APP_URL}/generate-pdf/${_id}`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    if (downloadPdfResponse.ok) {
+      console.log(downloadPdfResponse)
+      setPdfUrl(downloadPdfResponse.url)
+    } else {
+      console.error('Failed to generate PDF')
+    }
   }
+
   //get the overall report
   const handleReport = () => {
     const stDateObj = new Date(startDate)
@@ -35,32 +54,6 @@ const ReportPage = () => {
     const enISO = endDateObj.toISOString()
     console.log(stISO, enISO)
     getReportPosts(stISO, enISO)
-  }
-
-  //download your personal reportt
-  const handleDownload = async () => {
-    try {
-      const response = await fetch(
-        `${process.env.REACT_APP_URL}/posts/generatePdf/${_id}`,
-        {
-          method: 'GET',
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      if (response.ok) {
-        const pdfUrl = response.url
-        const a = document.createElement('a')
-        a.href = pdfUrl
-        a.download = 'activity_report.pdf'
-        a.click()
-      } else {
-        console.error('Failed to generate PDF')
-      }
-    } catch (error) {
-      console.error('Network error:', error)
-    }
   }
 
   return (
@@ -123,9 +116,14 @@ const ReportPage = () => {
           </tbody>
         </table>
         <div className='btnContainer'>
-          <button className='btn-download' onClick={handleDownload}>
-            Download PDF
-          </button>
+          <a
+            href={pdfUrl}
+            className='btn-download'
+            target='_blank'
+            rel='noreferrer'
+          >
+            View PDF
+          </a>
         </div>
       </div>
     </>
