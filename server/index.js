@@ -97,7 +97,7 @@ app.get('/generate-pdf/:id', async (req, res) => {
   const page = await browser.newPage()
 
   // Replace the hardcoded placeholder with the actual id
-  await page.goto(`http://localhost:3001/posts/generatePdf/${id}`, {
+  await page.goto(`http://13.127.87.255:3001/posts/generatePdf/${id}`, {
     waitUntil: 'domcontentloaded',
   })
   // Generate a PDF that closely resembles the webpage
