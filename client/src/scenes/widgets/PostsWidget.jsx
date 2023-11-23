@@ -36,41 +36,42 @@ const PostsWidget = ({ userId, isProfile = false }) => {
       getPosts()
     }
   }, [])
-
+  // console.log(posts)
   return (
     <>
-      {posts
-        .slice()
-        .reverse()
-        .map(
-          ({
-            _id,
-            userId,
-            firstName,
-            lastName,
-            description,
-            branch,
-            picturePath,
-            userPicturePath,
-            likes,
-            comments,
-            createdAt,
-          }) => (
-            <PostWidget
-              key={_id}
-              postId={_id}
-              postUserId={userId}
-              name={`${firstName} ${lastName}`}
-              description={description}
-              branch={branch}
-              picturePath={picturePath}
-              userPicturePath={userPicturePath}
-              likes={likes}
-              comments={comments}
-              createdAt={createdAt}
-            />
-          )
-        )}
+      {Array.isArray(posts) &&
+        posts
+          .slice()
+          .reverse()
+          .map(
+            ({
+              _id,
+              userId,
+              firstName,
+              lastName,
+              description,
+              branch,
+              picturePath,
+              userPicturePath,
+              likes,
+              comments,
+              createdAt,
+            }) => (
+              <PostWidget
+                key={_id}
+                postId={_id}
+                postUserId={userId}
+                name={`${firstName} ${lastName}`}
+                description={description}
+                branch={branch}
+                picturePath={picturePath}
+                userPicturePath={userPicturePath}
+                likes={likes}
+                comments={comments}
+                createdAt={createdAt}
+              />
+            )
+          )}
     </>
   )
 }

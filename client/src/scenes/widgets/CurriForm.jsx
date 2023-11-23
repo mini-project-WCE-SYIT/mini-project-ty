@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import TextField from '@mui/material/TextField'
 import {
   EditOutlined,
@@ -280,17 +281,19 @@ const CurriForm = ({ picturePath }) => {
               <MoreHorizOutlined className='icon' />
             </FlexBetween>
           )}
-          <Button
-            disabled={!shortDescription}
-            onClick={handlePost}
-            sx={{
-              color: palette.background.alt,
-              backgroundColor: palette.primary.main,
-              borderRadius: '3rem',
-            }}
-          >
-            POST
-          </Button>
+          <Link to='/home'>
+            <Button
+              disabled={!shortDescription}
+              onClick={handlePost}
+              sx={{
+                color: palette.background.alt,
+                backgroundColor: palette.primary.main,
+                borderRadius: '3rem',
+              }}
+            >
+              POST
+            </Button>
+          </Link>
         </FlexBetween>
       </div>
     </div>
