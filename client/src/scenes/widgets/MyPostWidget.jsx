@@ -18,7 +18,7 @@ import Navbar from '../navbar/index'
 import './MyPostWidget.css'
 import { Height } from '@mui/icons-material'
 
-const MyPostWidget = ({ picturePath }) => {
+const MyPostWidget = () => {
   const [isAchieved, setIsAchieved] = useState(0)
   const dispatch = useDispatch()
   const [isImage, setIsImage] = useState(false)
@@ -30,7 +30,7 @@ const MyPostWidget = ({ picturePath }) => {
   const [date, setDate] = useState('')
   const [organizedBy, setOrganizedBy] = useState('')
   const { palette } = useTheme()
-  const { _id } = useSelector((state) => state.user)
+  const { _id, picturePath } = useSelector((state) => state.user)
   const token = useSelector((state) => state.token)
   const isNonMobileScreens = useMediaQuery('(min-width: 1000px)')
   const mediumMain = palette.neutral.mediumMain
@@ -74,7 +74,9 @@ const MyPostWidget = ({ picturePath }) => {
           <p>Please select the type of achievement you want to post about</p>
           <div className='buttons'>
             <button
-              className='button curricular'
+              className={`button curricular ${
+                isAchieved === 1 ? 'active' : 'inactive'
+              }`}
               onClick={() => {
                 setIsAchieved(1)
               }}
@@ -82,7 +84,9 @@ const MyPostWidget = ({ picturePath }) => {
               Curricular
             </button>
             <button
-              className='button extracurricular'
+              className={`button extracurricular ${
+                isAchieved === 3 ? 'active' : 'inactive'
+              }`}
               onClick={() => {
                 setIsAchieved(3)
               }}
@@ -90,7 +94,9 @@ const MyPostWidget = ({ picturePath }) => {
               Extra Curricular
             </button>
             <button
-              className='button cocurricular'
+              className={`button cocurricular ${
+                isAchieved === 2 ? 'active' : 'inactive'
+              }`}
               onClick={() => {
                 setIsAchieved(2)
               }}
@@ -100,9 +106,9 @@ const MyPostWidget = ({ picturePath }) => {
           </div>
         </div>
       </div>
-      {isAchieved === 1 && <CurriForm />}
-      {isAchieved === 2 && <CoCurriForm />}
-      {isAchieved === 3 && <ExCurriForm />}
+      {isAchieved === 1 && <CurriForm picturePath={picturePath} />}
+      {isAchieved === 2 && <CoCurriForm picturePath={picturePath} />}
+      {isAchieved === 3 && <ExCurriForm picturePath={picturePath} />}
     </div>
   )
 }

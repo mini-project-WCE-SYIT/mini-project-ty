@@ -41,6 +41,8 @@ const ReportPage = () => {
     if (downloadPdfResponse.ok) {
       console.log(downloadPdfResponse)
       setPdfUrl(downloadPdfResponse.url)
+      console.log(downloadPdfResponse.url)
+      console.log(pdfUrl)
     } else {
       console.error('Failed to generate PDF')
     }
@@ -118,7 +120,7 @@ const ReportPage = () => {
         <div className='btnContainer'>
           <a
             href={pdfUrl}
-            className='btn-download'
+            className='btn-download '
             target='_blank'
             rel='noreferrer'
           >

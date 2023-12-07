@@ -111,7 +111,19 @@ table.report-table tr:hover {
   padding: 0.8rem;
 }
 
-/* Hover effect for the button */
-.btnContainer button:hover {
-  background-color: #00d604; /* Slightly darker blue on hover */
+.btn-download {
+  padding: 7px 20px;
+  margin-top: 1rem;
+  background-color: transparent;
+  color: black;
+  border: 1px solid #1deb21;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-download:hover {
+  background-color: #1deb21;
+  color: white;
 }

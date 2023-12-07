@@ -154,8 +154,8 @@ const CurriForm = ({ picturePath }) => {
                 variant='standard'
                 type='date'
                 placeholder='Start Date'
+                value={startDate}
                 onChange={(e) => setstartDate(e.target.value)}
-                value={setstartDate}
               />
               <Typography color={'grey'}>End Date: </Typography>
               <TextField
