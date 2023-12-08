@@ -75,23 +75,22 @@ app.get('/generate-pdf/:id', async (req, res) => {
   res.contentType('application/pdf')
   res.send(pdfBuffer)
 })
-app.get('/generate-pdf/all', async (req, res) => {
+app.get('/generate-pdf/:startDate/:endDate', async (req, res) => {
+  const { startDate, endDate } = req.params;
+  
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
 
-  const browser = await puppeteer.launch()
-  const page = await browser.newPage()
-
-  // Replace the hardcoded placeholder with the actual id
-  await page.goto(`http://localhost:3001/posts/generatePDFForAllUsers/`, {
+  await page.goto(`http://localhost:3001/posts/generatePDFForAllUsers/${startDate}/${endDate}`, {
     waitUntil: 'domcontentloaded',
-  })
-  // Generate a PDF that closely resembles the webpage
-  const pdfBuffer = await page.pdf({ format: 'A4' })
+  });
+  const pdfBuffer = await page.pdf({ format: 'A4' });
 
-  await browser.close()
+  await browser.close();
 
-  res.contentType('application/pdf')
-  res.send(pdfBuffer)
-})
+  res.contentType('application/pdf');
+  res.send(pdfBuffer);
+});
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001
