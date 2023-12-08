@@ -57,39 +57,6 @@ app.use('/auth', authRoutes)
 app.use('/users', userRoutes)
 app.use('/posts', postRoutes)
 
-// const activities = [
-//   {
-//     faculty: 'John Doe',
-//     name: 'Teaching',
-//     research: 'Research Paper 1',
-//     thesis: "Master's Thesis",
-//     scholarship: 'Scholarship 1',
-//     description: 'Description 1',
-//     organised: 'Organization A',
-//     date: '2023-11-07',
-//   },
-//   {
-//     faculty: 'Jane Smith',
-//     name: 'Research',
-//     research: 'Research Paper 2',
-//     thesis: 'Ph.D. Thesis',
-//     scholarship: 'Scholarship 2',
-//     description: 'Description 2',
-//     organised: 'Organization B',
-//     date: '2023-11-08',
-//   },
-//   // Add more activity objects as needed
-// ]
-
-// app.get('/ejs/temp1', (req, res) => {
-//   res.render('first', {
-//     period: 'Some Period',
-//     currentDate: new Date(),
-//     activities: activities,
-//   })
-// })
-
-// Define a route to generate a PDF from the rendered HTML
 app.get('/generate-pdf/:id', async (req, res) => {
   const { id } = req.params
 
@@ -98,6 +65,23 @@ app.get('/generate-pdf/:id', async (req, res) => {
 
   // Replace the hardcoded placeholder with the actual id
   await page.goto(`http://localhost:3001/posts/generatePdf/${id}`, {
+    waitUntil: 'domcontentloaded',
+  })
+  // Generate a PDF that closely resembles the webpage
+  const pdfBuffer = await page.pdf({ format: 'A4' })
+
+  await browser.close()
+
+  res.contentType('application/pdf')
+  res.send(pdfBuffer)
+})
+app.get('/generate-pdf/all', async (req, res) => {
+
+  const browser = await puppeteer.launch()
+  const page = await browser.newPage()
+
+  // Replace the hardcoded placeholder with the actual id
+  await page.goto(`http://localhost:3001/posts/generatePDFForAllUsers/`, {
     waitUntil: 'domcontentloaded',
   })
   // Generate a PDF that closely resembles the webpage
