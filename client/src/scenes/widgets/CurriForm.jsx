@@ -271,10 +271,10 @@ const CurriForm = ({ picturePath }) => {
                 <AttachFileOutlined className='icon' />
                 <Typography color={mediumMain}>Attachment</Typography>
               </FlexBetween>
-              <FlexBetween>
+              {/* <FlexBetween>
                 <MicOutlined className='icon' />
                 <Typography color={mediumMain}>Audio</Typography>
-              </FlexBetween>
+              </FlexBetween> */}
             </>
           ) : (
             <FlexBetween>
