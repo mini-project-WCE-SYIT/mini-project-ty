@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from 'scenes/navbar'
 import { useSelector } from 'react-redux'
-import './ReportPage.css'
+import './allReportPage.css'
 
-const ReportPage = () => {
+const AllReportPage = () => {
   const [startDate, setStartDate] = useState('')
   const [endDate, setEndDate] = useState('')
   const [pdfUrl, setPdfUrl] = useState('')
@@ -11,26 +11,25 @@ const ReportPage = () => {
   const [data, setData] = useState([])
   const token = useSelector((state) => state.token)
 
-  const getReportPosts = async (start, end) => {
+  const getReportPosts = async   (start, end) => {
     const stDateObj = new Date(startDate)
     const endDateObj = new Date(endDate)
     const stFormattedDate = stDateObj.toISOString().split('T')[0]
     const enFormattedDate = endDateObj.toISOString().split('T')[0]
     console.log('start and end dates are', start, end)
-    console.log(_id)
+ 
     const response = await fetch(
-      `${process.env.REACT_APP_URL}/posts/timeframe/${_id}/${start}/${end}`,
-      {
-        method: 'GET',
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    )
-    const data1 = await response.json()
-    setData(data1)
-    console.log(data1)
+        `${process.env.REACT_APP_URL}/posts/timeframe/${stFormattedDate}/${enFormattedDate}`,
+        {
+          method: 'GET',
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      const data1 = await response.json()
+      setData(data1)
 
     const downloadPdfResponse = await fetch(
-      `${process.env.REACT_APP_URL}/generate-pdf/${_id}`,
+      `${process.env.REACT_APP_URL}/posts/generatePDFForAllUsers/${start}/${end}`,
       {
         method: 'GET',
         headers: {
@@ -54,7 +53,8 @@ const ReportPage = () => {
     const endDateObj = new Date(endDate)
     const stISO = stDateObj.toISOString()
     const enISO = endDateObj.toISOString()
-    console.log(stISO, enISO)
+    // console.log(stISO, enISO)
+    // console.log(data)
     getReportPosts(stISO, enISO)
   }
 
@@ -95,6 +95,7 @@ const ReportPage = () => {
           <thead>
             <tr>
               <th>Sr. No.</th>
+                <th>Faculty Name</th>
               <th>Event Name</th>
               <th>Activity Type</th>
               <th>Location</th>
@@ -107,6 +108,7 @@ const ReportPage = () => {
             {data?.map((item, index) => (
               <tr key={index}>
                 <td>{index + 1}</td>
+                <td>{`${item.firstName} ${item.lastName}`}</td>
                 <td>{item.eventName}</td>
                 <td>{item.activityType}</td>
                 <td>{item.location}</td>
@@ -118,7 +120,7 @@ const ReportPage = () => {
           </tbody>
         </table>
         <div className='btnContainer'>
-          {pdfUrl &&
+            {pdfUrl &&
             <a
             href={pdfUrl}
             className='btn-download '
@@ -126,8 +128,8 @@ const ReportPage = () => {
             rel='noreferrer'
           >
             View PDF
-          </a>
-          }
+          </a>  
+            }
           
         </div>
       </div>
@@ -135,4 +137,4 @@ const ReportPage = () => {
   )
 }
 
-export default ReportPage
+export default AllReportPage

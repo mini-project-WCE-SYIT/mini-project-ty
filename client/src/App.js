@@ -10,6 +10,7 @@ import { themeSettings } from "./theme";
 import FAQPage from "scenes/FAQPage/FAQPage";
 import ReportPage from "scenes/ReportPage/ReportPage";
 import MyPostWidget from "scenes/widgets/MyPostWidget";
+import AllReportPage from "scenes/allReportPage/AllReportPage";
 
 function App() {
   const mode = useSelector((state) => state.mode);
@@ -35,6 +36,10 @@ function App() {
               path="/profile/:userId"
               element={isAuth ? <ProfilePage /> : <Navigate to="/" />}
             />
+            <Route 
+              path="/generateAllPDF"
+              element={isAuth ? <AllReportPage /> : <Navigate to="/" />}
+              />
             <Route
               path="/faq"
               element={isAuth ? <FAQPage /> : <Navigate to="/" />}

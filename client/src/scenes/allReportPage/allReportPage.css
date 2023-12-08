@@ -1,0 +1,130 @@
+/* Style the container div */
+.date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 70px 0;
+    gap: 5rem;
+  }
+  
+  /* Style the date itoDatenputs */
+  .date input[type='date'] {
+    padding: 10px;
+    border: 2px solid #87ceeb; /* Sky Blue */
+    border-radius: 5px;
+    margin: 0 10px;
+    font-size: 16px;
+    background-color: white;
+    color: #333; /* Dark gray text */
+  }
+  
+  /* Style the placeholder text */
+  .date input[type='date']::placeholder {
+    color: #ccc; /* Light gray placeholder text */
+  }
+  
+  /* Style the button container */
+  .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Style the button */
+  .btn button {
+    background-color: #87ceeb; /* Sky Blue */
+    color: white;
+    border: none;
+    margin: -30px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  /* Hover effect for the button */
+  .btn button:hover {
+    background-color: #5cacee; /* Slightly darker blue on hover */
+  }
+  
+  .date p {
+    font-size: large;
+  }
+  
+  .tbContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  /* Style for the table container */
+  table.report-table {
+    width: 80%;
+    margin-top: 5rem;
+  }
+  /* Style for the table header row */
+  table.report-table thead {
+    background-color: #f2f2f2;
+  }
+  
+  table.report-table th {
+    text-align: center;
+    padding: 8px;
+    font-weight: bold;
+    border: 1px solid #ddd;
+  }
+  
+  table.report-table tr {
+    background-color: #fff;
+  }
+  
+  table.report-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  table.report-table td {
+    text-align: left;
+    padding: 1rem 2rem;
+    border: 1px solid #ddd;
+    width: 5rem;
+  }
+  
+  table.report-table tr:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .btnContainer {
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .btnContainer button {
+    background-color: #5df355; /* Sky Blue */
+    margin: 1rem 0;
+    width: 15rem;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0.8rem;
+  }
+  
+  .btn-download {
+    padding: 7px 20px;
+    margin-top: 1rem;
+    background-color: transparent;
+    color: black;
+    border: 1px solid #1deb21;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .btn-download:hover {
+    background-color: #1deb21;
+    color: white;
+  }
+  

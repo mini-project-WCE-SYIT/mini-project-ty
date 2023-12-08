@@ -122,7 +122,7 @@ const Navbar = () => {
                   {' '}
                   <div
                     onClick={() => {
-                      navigate('/generateReport')
+                      navigate('/generateAllPDF')
                     }}
                   >
                     Export All Activity

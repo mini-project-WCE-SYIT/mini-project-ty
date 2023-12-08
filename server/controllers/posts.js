@@ -106,6 +106,19 @@ export const getAllPostsInGivenTimeFrame = async (req, res) => {
     res.status(404).json({ message: err.message })
   }
 }
+export const getAllPostsOfIdvInGivenTimeFrame = async (req, res) => {
+  try {
+    const { startDate, endDate, _id } = req.params
+    // console.log(startDate,endDate);
+    const posts = await Post.find({
+      userId:_id,
+      createdAt: { $gte: startDate, $lt: endDate },
+    })
+    res.status(200).json(posts)
+  } catch (err) {
+    res.status(404).json({ message: err.message })
+  }
+}
 
 const activities = [
   {

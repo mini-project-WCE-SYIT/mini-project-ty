@@ -1,5 +1,5 @@
 import express from "express";
-import { getFeedPosts, getUserPosts, likePost,getAllPostsInGivenTimeFrame, generatePDF, generatePDFForAllUsers } from "../controllers/posts.js";
+import { getFeedPosts, getUserPosts, likePost,getAllPostsInGivenTimeFrame, getAllPostsOfIdvInGivenTimeFrame,generatePDF, generatePDFForAllUsers } from "../controllers/posts.js";
 import { verifyToken } from "../middleware/auth.js";
 
 const router = express.Router();
@@ -11,6 +11,7 @@ router.get("/timeframe/:startDate/:endDate", verifyToken, getAllPostsInGivenTime
 /* UPDATE */
 router.patch("/:id/like", verifyToken, likePost);
 router.get("/timeframe/:startDate/:endDate", getAllPostsInGivenTimeFrame);
+router.get("/timeframe/:_id/:startDate/:endDate", getAllPostsOfIdvInGivenTimeFrame);
 router.get("/generatePdf/:_id", generatePDF);
 router.get("/generatePDFForAllUsers/:startDate/:endDate", generatePDFForAllUsers);
 export default router;
