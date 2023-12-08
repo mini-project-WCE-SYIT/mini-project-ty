@@ -150,6 +150,7 @@ export const generatePDF = async (req, res) => {
 }
 
 export const generatePDFForAllUsers = async (req, res) => {
+  const { startDate, endDate } = req.params
   const users = await User.find()
   if (!users) {
     return res.status(404).json({ msg: 'No users found' })
@@ -157,10 +158,12 @@ export const generatePDFForAllUsers = async (req, res) => {
   console.log(users);
   let activities = []
   for (let i = 0; i < users.length; i++) {
-    const posts = await Post.find({ userId: users[i]._id })
+    const posts = await Post.find({
+      userId: users[i]._id,
+      createdAt: { $gte: startDate, $lt: endDate },
+    })
     if (posts) {
       activities = [...activities, ...posts]
-      // return res.status(404).json({ msg: 'User dosent have any posts' })
     }
   }
   const date = new Date()

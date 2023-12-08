@@ -12,6 +12,6 @@ router.get("/timeframe/:startDate/:endDate", verifyToken, getAllPostsInGivenTime
 router.patch("/:id/like", verifyToken, likePost);
 router.get("/timeframe/:startDate/:endDate", getAllPostsInGivenTimeFrame);
 router.get("/generatePdf/:_id", generatePDF);
-router.get("/generatePDFForAllUsers/", generatePDFForAllUsers);
+router.get("/generatePDFForAllUsers/:startDate/:endDate", generatePDFForAllUsers);
 export default router;
 
