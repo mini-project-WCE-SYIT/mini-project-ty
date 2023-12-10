@@ -10,7 +10,6 @@ Ms. Patil Yashashwi Kailas (21610020)<br>
 Ms. Umare Shravani Ashok (21610075)<br>
 Ms. Ladda Vaishnavi Laxmikant (21610076)<br>
 Ms. Bhosale Swarada Pravin (21610077)<br>
-Mr. Choudhary Gopal Jalaram (21610080)<br>
 
 ### Introduction:
 Introducing WCEacheivo, an innovative web-based application aimed at developing how
